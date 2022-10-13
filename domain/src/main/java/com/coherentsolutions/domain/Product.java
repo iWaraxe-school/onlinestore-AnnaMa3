@@ -1,8 +1,8 @@
 package com.coherentsolutions.domain;
 public class Product {
     private String name;
-    private int rate;
-    private int price;
+    private double rate;
+    private double price;
 
     public Product(String name, int rate, int price) {
         this.name = name;
@@ -14,18 +14,18 @@ public class Product {
         return name;
     }
 
-    public int getRate() {
+    public double getRate() {
         return rate;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
 
     @Override
     public String toString(){
-        return "Name: " + name + ", " + "Rate: " + rate + ", " + "Price: " + price;
+        return "Name is " + name + ", with rate: " + rate + " and price: " + price;
     }
 
 

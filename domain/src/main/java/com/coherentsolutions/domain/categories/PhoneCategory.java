@@ -1,4 +1,5 @@
 package com.coherentsolutions.domain.categories;
+import com.coherentsolutions.domain.Categories;
 import com.coherentsolutions.domain.Category;
 
 public class PhoneCategory extends Category {
@@ -8,6 +9,6 @@ public class PhoneCategory extends Category {
 
     @Override
     public String getName() {
-        return "Phone";
+        return Categories.PHONE.name();
     }
 }

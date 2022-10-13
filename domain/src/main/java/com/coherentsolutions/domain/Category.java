@@ -2,7 +2,7 @@ package com.coherentsolutions.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Category {
+public abstract class Category {
     private String name;
     private List<Product> productList;
 
@@ -13,7 +13,7 @@ public class Category {
 
     public String getName() {
         return name;
-    }
+    };
 
     public void addProduct (Product product) {
         productList.add(product);
