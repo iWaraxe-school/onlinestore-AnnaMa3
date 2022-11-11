@@ -4,8 +4,8 @@ import com.coherentsolutions.domain.Category;
 
 public class BikeCategory extends Category {
 
-    public BikeCategory(String name) {
-        super(name);
+    public BikeCategory() {
+        super(Categories.BIKE.name());
     }
 
     @Override

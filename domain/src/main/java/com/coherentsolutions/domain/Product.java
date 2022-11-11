@@ -25,7 +25,7 @@ public class Product {
 
     @Override
     public String toString(){
-        return "Name is " + name + ", with rate: " + rate + " and price: " + price;
+        return "Name: " + name + " -- Rate: " + rate + " -- Price: " + price;
     }
 
 

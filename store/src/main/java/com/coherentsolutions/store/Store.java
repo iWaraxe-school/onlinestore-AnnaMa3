@@ -11,4 +11,9 @@ public class Store {
        categoryList.add(category);
     }
 
+    public void printAll() {
+        for (Category category : categoryList) {
+            category.printProducts();
+        }
+    }
 }
