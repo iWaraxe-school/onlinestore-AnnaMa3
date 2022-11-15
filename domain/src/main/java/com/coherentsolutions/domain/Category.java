@@ -20,4 +20,13 @@ public abstract class Category {
     }
 
 
+    public void printProducts() {
+        System.out.println("");
+        System.out.println("--" + name + "--");
+
+        for (Product product : productList) {
+            System.out.println(product);
+        }
+
+    }
 }
