@@ -14,20 +14,13 @@ public class XmlParser  {
         XMLInputFactory inputFactory = XMLInputFactory.newFactory();
         XMLStreamReader streamReader = inputFactory.createXMLStreamReader(new FileReader("store/src/main/resources/config.xml"));
         streamReader.nextTag();
-        System.out.println(streamReader.getLocalName());
         streamReader.nextTag();
-        System.out.println(streamReader.getLocalName());
-
         Map<String,String> map = new TreeMap<>();
 
         while(!streamReader.isEndElement()) {
-
                 String key = streamReader.getLocalName();
-                System.out.println("key:" + key);
                 String value = streamReader.getElementText();
-                System.out.println("value:" +value);
                 map.put(key, value);
-
                 streamReader.nextTag();
         }
 
