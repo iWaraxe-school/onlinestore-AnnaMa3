@@ -22,8 +22,7 @@ public class RandomStorePopulator {
     private String generateProductName(String categoryName){
         switch (categoryName) {
             case "BIKE":
-//                return faker.hipster().word();
-                return "TEST";
+                return faker.hipster().word();
             case "MILK":
                 return faker.food().ingredient();
             case "PHONE":

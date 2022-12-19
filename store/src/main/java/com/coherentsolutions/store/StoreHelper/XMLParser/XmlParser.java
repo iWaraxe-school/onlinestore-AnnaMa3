@@ -5,8 +5,8 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class XmlParser  {
 
@@ -15,7 +15,7 @@ public class XmlParser  {
         XMLStreamReader streamReader = inputFactory.createXMLStreamReader(new FileReader("store/src/main/resources/config.xml"));
         streamReader.nextTag();
         streamReader.nextTag();
-        Map<String,String> map = new TreeMap<>();
+        Map<String,String> map = new LinkedHashMap<>();
 
         while(!streamReader.isEndElement()) {
                 String key = streamReader.getLocalName();

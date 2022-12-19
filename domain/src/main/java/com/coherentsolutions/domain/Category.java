@@ -19,37 +19,6 @@ public abstract class Category {
         productList.add(product);
     }
 
-    public List<Product> compare(Map<String, String> linkedHashMap){
-        Set<String> keys = linkedHashMap.keySet();
-
-        Comparator<Product> nameComparator = Comparator.comparing(Product::getName, String ::compareToIgnoreCase);
-        Comparator<Product> priceComparator = Comparator.comparing(Product::getPrice, Double::compareTo);
-        Comparator<Product> rateComparator = Comparator.comparing(Product::getRate, Double::compareTo);
-
-        for (String key : keys) {
-            if (linkedHashMap.get(key).equals("desc")){
-                System.out.println(key);
-                System.out.println(linkedHashMap.get(key));
-                if (key.equals("name")){
-                    nameComparator = nameComparator.reversed();
-                } else if (key.equals("price")){
-                    priceComparator = priceComparator.reversed();
-                } else {
-                    rateComparator = rateComparator.reversed();
-                }
-
-            } else {
-                System.out.println(key);
-                System.out.println(linkedHashMap.get(key));
-            }
-            }
-
-        Comparator<Product> generalComparator = nameComparator.thenComparing(priceComparator).thenComparing(rateComparator);
-        productList.sort(generalComparator);
-        return productList;
-
-    }
-
     public void printProducts() {
         System.out.println("");
         System.out.println("--" + name + "--");
@@ -58,5 +27,10 @@ public abstract class Category {
             System.out.println(product);
         }
 
+    }
+
+
+    public List<Product> getProducts() {
+        return productList;
     }
 }

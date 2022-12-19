@@ -1,16 +1,17 @@
 package com.coherentsolutions.store;
+
 import com.coherentsolutions.domain.Category;
-import com.coherentsolutions.store.StoreHelper.XMLParser.XmlParser;
+import com.coherentsolutions.domain.Product;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Store {
 
     private List<Category> categoryList= new ArrayList<>();
+    private List<Product> allProductList= new ArrayList<Product>();
 
     public Store() throws XMLStreamException, FileNotFoundException {
     }
@@ -19,14 +20,21 @@ public class Store {
        categoryList.add(category);
     }
 
-    Map<String,String> map = XmlParser.parseToMap();
 
     public void printAll() {
         for (Category category : categoryList) {
-            category.compare(map);
             category.printProducts();
         }
     }
 
+    public List<Product> getAllProductList() {
+        for (Category category : categoryList) {
+            List<Product> categoryProducts = category.getProducts();
+            for (Product product: categoryProducts) {
+                allProductList.add(product);
+            }
 
+        }
+        return allProductList;
+    }
 }
