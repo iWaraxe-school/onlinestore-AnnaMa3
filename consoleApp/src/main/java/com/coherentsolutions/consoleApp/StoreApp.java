@@ -1,11 +1,14 @@
 package com.coherentsolutions.consoleApp;
 
+import com.coherentsolutions.domain.Product;
 import com.coherentsolutions.store.Store;
+import com.coherentsolutions.store.StoreHelper.Comparator.Comparator;
 import com.coherentsolutions.store.StoreHelper.RandomStorePopulator;
 import com.coherentsolutions.store.StoreHelper.XMLParser.XmlParser;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Map;
 
 public class StoreApp {
@@ -15,11 +18,14 @@ public class StoreApp {
         randomStorePopulator.fillStore();
         onlineStore.printAll();
 
-
         Map<String,String> map = XmlParser.parseToMap();
-        for(Map.Entry mp: map.entrySet()){
-            System.out.println("KEY: " + mp.getKey() + ", VALUE: " + mp.getValue());
+        List<Product> allStoreProducts = onlineStore.getAllProductList();
+        allStoreProducts.sort(Comparator.compare(map));
+
+        for (Product product : allStoreProducts) {
+            System.out.println(product);
         }
+
 
 
     }

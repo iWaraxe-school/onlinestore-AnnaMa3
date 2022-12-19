@@ -38,6 +38,7 @@ public class RandomStorePopulator {
 
     private double generateProductPrice(){
         return faker.number().randomDouble(1,0,1000);
+
     }
 
     public Product generateProduct(String categoryName){
