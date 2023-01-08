@@ -11,7 +11,6 @@ import java.util.List;
 public class Store {
 
     private List<Category> categoryList= new ArrayList<>();
-    private List<Product> allProductList= new ArrayList<Product>();
 
     public Store() throws XMLStreamException, FileNotFoundException {
     }
@@ -28,13 +27,11 @@ public class Store {
     }
 
     public List<Product> getAllProductList() {
+        List<Product> allProducts = new ArrayList<Product>();
         for (Category category : categoryList) {
             List<Product> categoryProducts = category.getProducts();
-            for (Product product: categoryProducts) {
-                allProductList.add(product);
-            }
-
+            allProducts.addAll(categoryProducts);
         }
-        return allProductList;
+        return allProducts;
     }
 }

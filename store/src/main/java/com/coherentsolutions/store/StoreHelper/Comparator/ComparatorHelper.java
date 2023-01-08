@@ -2,21 +2,18 @@ package com.coherentsolutions.store.StoreHelper.Comparator;
 
 import com.coherentsolutions.domain.Product;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-public class Comparator {
+public class ComparatorHelper {
 
-    static List<java.util.Comparator<Product>> comparatorList = new ArrayList<java.util.Comparator<Product>>();
+    static List<Comparator<Product>> comparatorList = new ArrayList<>();
 
-    public static java.util.Comparator<? super Product> compare(Map<String, String> linkedHashMap){
+    public static Comparator<? super Product> compare(Map<String, String> linkedHashMap){
         Set<String> keys = linkedHashMap.keySet();
 
-        java.util.Comparator<Product> nameComparator = java.util.Comparator.comparing(Product::getName, String ::compareToIgnoreCase);
-        java.util.Comparator<Product> priceComparator = java.util.Comparator.comparing(Product::getPrice, Double::compareTo);
-        java.util.Comparator<Product> rateComparator = java.util.Comparator.comparing(Product::getRate, Double::compareTo);
+        Comparator<Product> nameComparator = Comparator.comparing(Product::getName, String ::compareToIgnoreCase);
+        Comparator<Product> priceComparator = Comparator.comparing(Product::getPrice, Double::compareTo);
+        Comparator<Product> rateComparator = Comparator.comparing(Product::getRate, Double::compareTo);
 
         for (String key : keys) {
             if (linkedHashMap.get(key).equals("desc")){
@@ -47,7 +44,7 @@ public class Comparator {
             }
 
 
-        java.util.Comparator<Product> generalComparator = (java.util.Comparator<Product>) comparatorList.get(0);
+        Comparator<Product> generalComparator = (Comparator<Product>) comparatorList.get(0);
         for (int i=1; i<comparatorList.size(); i++){
             generalComparator = generalComparator.thenComparing(comparatorList.get(i));
 
