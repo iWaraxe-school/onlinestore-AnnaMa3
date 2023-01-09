@@ -1,6 +1,6 @@
 package com.coherentsolutions.domain;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.*;
 
 public abstract class Category {
     private String name;
@@ -8,7 +8,7 @@ public abstract class Category {
 
     public Category(String name) {
         this.name = name;
-        this.productList = new ArrayList<>();
+        productList = new ArrayList<>();
     }
 
     public String getName() {
@@ -19,7 +19,6 @@ public abstract class Category {
         productList.add(product);
     }
 
-
     public void printProducts() {
         System.out.println("");
         System.out.println("--" + name + "--");
@@ -28,5 +27,10 @@ public abstract class Category {
             System.out.println(product);
         }
 
+    }
+
+
+    public List<Product> getProducts() {
+        return productList;
     }
 }
