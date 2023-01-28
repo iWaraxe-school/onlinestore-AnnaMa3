@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class StoreApp {
     public static void main(String[] args) throws XMLStreamException, IOException {
-        Store onlineStore = new Store();
+        Store onlineStore = Store.getStore();
         RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
         randomStorePopulator.fillStore();
         onlineStore.printAll();
