@@ -1,6 +1,7 @@
 package com.coherentsolutions.domain;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Category {
     private String name;

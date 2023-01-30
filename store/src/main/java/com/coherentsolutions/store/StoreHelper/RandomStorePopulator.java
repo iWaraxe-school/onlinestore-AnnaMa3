@@ -2,6 +2,7 @@ package com.coherentsolutions.store.StoreHelper;
 
 import com.coherentsolutions.domain.Category;
 import com.coherentsolutions.domain.Product;
+import com.coherentsolutions.domain.categories.*;
 import com.coherentsolutions.store.Store;
 import com.github.javafaker.Faker;
 import org.reflections.Reflections;
@@ -19,17 +20,24 @@ public class RandomStorePopulator {
         this.store = store;
     }
 
-    private String generateProductName(String categoryName){
-        switch (categoryName) {
-            case "BIKE":
-                return faker.hipster().word();
-            case "MILK":
-                return faker.food().ingredient();
-            case "PHONE":
-                return faker.app().name();
-            default:
-                return null;
+    CategoryFactory categoryFactory = new CategoryFactory();
+    CategoryType bike = categoryFactory.getCategory("bike");
+    CategoryType milk = categoryFactory.getCategory("milk");
+    CategoryType phone = categoryFactory.getCategory("phone");
+    List<CategoryType> categoryTypeList = new ArrayList<>();
+
+
+    public String generateProductName(String categoryName) {
+        categoryTypeList.add(milk);
+        categoryTypeList.add(bike);
+        categoryTypeList.add(phone);
+        String productName = new String();
+        for (CategoryType category : categoryTypeList) {
+              if (category.toString().toLowerCase().contains(categoryName.toLowerCase())) {
+                  productName = category.generateProductName(categoryName);
+              }
         }
+        return productName;
     }
 
     private double generateProductRate(){
