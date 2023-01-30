@@ -10,15 +10,23 @@ import java.util.List;
 
 public class Store {
 
+    private static Store store;
+
     private List<Category> categoryList= new ArrayList<>();
 
-    public Store() throws XMLStreamException, FileNotFoundException {
+    private Store() throws XMLStreamException, FileNotFoundException {
+    }
+
+    public static Store getStore() throws XMLStreamException, FileNotFoundException {
+        if (store == null){
+            store = new Store();
+        }
+        return store;
     }
 
     public void addCategory (Category category) {
        categoryList.add(category);
     }
-
 
     public void printAll() {
         for (Category category : categoryList) {
