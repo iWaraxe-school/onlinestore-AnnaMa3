@@ -19,6 +19,7 @@ public class StoreApp {
         System.out.println("\n --Enter-- \n" +
                 "sort \t products from store according config \n" +
                 "top \t print top 5 products of whole store sorted via price desc \n" +
+                "order \t print ordered products of whole store \n" +
                 "exit app quit\n");
 
         while (true) {

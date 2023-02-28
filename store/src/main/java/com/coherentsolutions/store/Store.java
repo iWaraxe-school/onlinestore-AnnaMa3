@@ -2,6 +2,7 @@ package com.coherentsolutions.store;
 
 import com.coherentsolutions.domain.Category;
 import com.coherentsolutions.domain.Product;
+import com.github.javafaker.Faker;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.FileNotFoundException;
@@ -11,6 +12,7 @@ import java.util.List;
 public class Store {
 
     private static Store store;
+    private Faker faker = new Faker();
 
     private List<Category> categoryList= new ArrayList<>();
 
@@ -42,4 +44,13 @@ public class Store {
         }
         return allProducts;
     }
+
+    public Product getRandomProduct() {
+        Product randomProduct = null;
+        for (Category category : categoryList) {
+            randomProduct = category.getProduct();
+        }
+        return randomProduct;
+    }
+
 }
