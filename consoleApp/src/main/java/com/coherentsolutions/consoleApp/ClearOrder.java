@@ -21,13 +21,15 @@ public class ClearOrder implements Runnable{
     public void run() {
         while (true){
             try {
-                TimeUnit.MINUTES.sleep(2);
+                TimeUnit.SECONDS.sleep(10);
             } catch (InterruptedException e){
                 throw new RuntimeException(e);
             }
+            System.out.println("-------------------------------");
             System.out.println("Thread: " + Thread.currentThread().getName());
             purchaseProducts.clearPurchasedProducts();
             System.out.println("List of Products was cleared");
+            System.out.println("-------------------------------");
             purchaseProducts.printPurchasedProducts();
         }
 

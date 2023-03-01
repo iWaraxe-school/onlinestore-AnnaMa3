@@ -8,6 +8,7 @@ import javax.xml.stream.XMLStreamException;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Store {
 
@@ -46,11 +47,10 @@ public class Store {
     }
 
     public Product getRandomProduct() {
-        Product randomProduct = null;
-        for (Category category : categoryList) {
-            randomProduct = category.getProduct();
-        }
-        return randomProduct;
+        Random random = new Random();
+        List<Product> allProductList = getAllProductList();
+        return allProductList.get(random.nextInt(allProductList.size()));
+
     }
 
 }

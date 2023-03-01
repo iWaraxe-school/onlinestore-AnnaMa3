@@ -33,9 +33,11 @@ public class CreateOrder extends Thread{
 
     @Override
     public void run() {
+        System.out.println("-------------------------------");
         System.out.println("Thread: " + Thread.currentThread().getName());
         Product purchaseProduct = store.getRandomProduct();
         System.out.println("Ordered product: " + purchaseProduct);
+        System.out.println("-------------------------------");
         purchaseProducts.addPurchasedProduct(purchaseProduct);
         purchaseProducts.printPurchasedProducts();
 //        purchaseProducts.clearPurchasedProducts();

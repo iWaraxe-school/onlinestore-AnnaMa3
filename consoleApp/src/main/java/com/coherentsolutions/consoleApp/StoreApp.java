@@ -14,6 +14,9 @@ public class StoreApp {
         RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
         randomStorePopulator.fillStore();
         onlineStore.printAll();
+        Runnable clearOrder = new ClearOrder();
+        new Thread(clearOrder).start();
+
 
 
         System.out.println("\n --Enter-- \n" +
