@@ -10,7 +10,7 @@ import java.util.List;
 
 public class TopChain extends Command{
     public TopChain() throws XMLStreamException, FileNotFoundException {
-        super(new Quit());
+        super(new CreateOrderChain());
     }
 
     @Override
@@ -23,12 +23,7 @@ public class TopChain extends Command{
             }
         }
         else if (getNext() != null){
-            if (request.equals("quit")) {
-                getNext().execute(request);
-            }
-            else {
-                System.out.println("Wrong command");
-            }
+            getNext().execute(request);
         }
     }
 

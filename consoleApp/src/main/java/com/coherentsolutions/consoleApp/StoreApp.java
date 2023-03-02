@@ -14,11 +14,15 @@ public class StoreApp {
         RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
         randomStorePopulator.fillStore();
         onlineStore.printAll();
+        Runnable clearOrder = new ClearOrder();
+        new Thread(clearOrder).start();
+
 
 
         System.out.println("\n --Enter-- \n" +
                 "sort \t products from store according config \n" +
                 "top \t print top 5 products of whole store sorted via price desc \n" +
+                "order \t print ordered products of whole store \n" +
                 "exit app quit\n");
 
         while (true) {
