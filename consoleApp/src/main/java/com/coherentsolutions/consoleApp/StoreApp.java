@@ -1,19 +1,29 @@
 package com.coherentsolutions.consoleApp;
 
 import com.coherentsolutions.store.Store;
-import com.coherentsolutions.store.StoreHelper.RandomStorePopulator;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class StoreApp {
-    public static void main(String[] args) throws XMLStreamException, IOException {
+    public static void main(String[] args) throws XMLStreamException, IOException, SQLException, ClassNotFoundException {
         Store onlineStore = Store.getStore();
-        RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
-        randomStorePopulator.fillStore();
-        onlineStore.printAll();
+        DataBaseHandler dataBaseHandler = new DataBaseHandler();
+        Connection connection = dataBaseHandler.getDbConnection();
+        dataBaseHandler.dropDatabase();
+        dataBaseHandler.createCategoryTable();
+        dataBaseHandler.createProductTable();
+        dataBaseHandler.fillStore(onlineStore);
+
+
+
+//        RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
+//        randomStorePopulator.fillStore();
+//        onlineStore.printAll();
         Runnable clearOrder = new ClearOrder();
         new Thread(clearOrder).start();
 
