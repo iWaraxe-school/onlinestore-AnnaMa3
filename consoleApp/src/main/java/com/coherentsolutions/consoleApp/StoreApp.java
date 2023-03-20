@@ -6,18 +6,18 @@ import javax.xml.stream.XMLStreamException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 public class StoreApp {
     public static void main(String[] args) throws XMLStreamException, IOException, SQLException, ClassNotFoundException {
         Store onlineStore = Store.getStore();
         DataBaseHandler dataBaseHandler = new DataBaseHandler();
-        Connection connection = dataBaseHandler.getDbConnection();
+        dataBaseHandler.getDbConnection();
         dataBaseHandler.dropDatabase();
         dataBaseHandler.createCategoryTable();
         dataBaseHandler.createProductTable();
         dataBaseHandler.fillStore(onlineStore);
+        dataBaseHandler.printStore();
 
 
 

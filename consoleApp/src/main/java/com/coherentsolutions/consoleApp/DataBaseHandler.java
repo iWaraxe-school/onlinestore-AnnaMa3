@@ -14,8 +14,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class DataBaseHandler extends Config {
-    private static Statement STATEMENT_ENCLOSED = null;
-    private static Statement STATEMENT = null;
+    static ResultSet RESULT = null;
+    static Statement STATEMENT_ENCLOSED = null;
+    static Statement STATEMENT = null;
     Connection dbConnection;
     private Faker faker = new Faker();
     public Connection getDbConnection() throws ClassNotFoundException, SQLException{
@@ -85,10 +86,29 @@ public class DataBaseHandler extends Config {
             }
             j++;
         }
+    }
 
+    public void printStore() throws SQLException, XMLStreamException, FileNotFoundException {
+        ResultSet rs1 = STATEMENT.executeQuery("SELECT * FROM Categories");
 
+        while(rs1.next()) {
+            System.out.println("-----------------------------------------------------");
+            System.out.println(rs1.getString("Name"));
+            System.out.println("-----------------------------------------------------");
 
+            int categoryId1 = rs1.getInt("ID");
+            ResultSet rs2 = STATEMENT_ENCLOSED.executeQuery("SELECT * FROM Products");
 
+            while (rs2.next()){
+                int categoryId2 = rs2.getInt("Category_ID");
+                if (categoryId1 == categoryId2){
+                    System.out.println("Name: " + rs2.getString("Name") + ", Rate: " + rs2.getString("Rate") + ", Price: " + rs2.getString("Price"));
+
+                }
+
+            }
+
+        }
 
 
     }
