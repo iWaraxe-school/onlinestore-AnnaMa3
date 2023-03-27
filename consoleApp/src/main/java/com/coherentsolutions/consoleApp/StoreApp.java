@@ -19,6 +19,12 @@ public class StoreApp {
         dataBaseHandler.fillStore(onlineStore);
         dataBaseHandler.printStore();
 
+        Server.startServer();
+//        StoreDAO storeDAO = new StoreDAO(dataBaseHandler);
+//        storeDAO.getAllProducts();
+
+
+
 
 
 //        RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
