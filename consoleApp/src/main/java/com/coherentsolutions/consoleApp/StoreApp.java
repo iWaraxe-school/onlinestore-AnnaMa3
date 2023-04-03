@@ -20,8 +20,6 @@ public class StoreApp {
         dataBaseHandler.printStore();
 
         Server.startServer();
-//        StoreDAO storeDAO = new StoreDAO(dataBaseHandler);
-//        storeDAO.getAllProducts();
 
 
 

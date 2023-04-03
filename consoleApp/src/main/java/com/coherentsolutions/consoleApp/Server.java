@@ -1,5 +1,6 @@
 package com.coherentsolutions.consoleApp;
 
+import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
@@ -16,8 +17,12 @@ public class Server {
         DataBaseHandler dataBaseHandler = new DataBaseHandler();
         StoreDAO storeDAO = new StoreDAO(dataBaseHandler);
 
-        server.createContext("/", new RootHandler());
-        server.createContext("/store", new MainPage(storeDAO));
+        HttpContext contextMainPage = server.createContext("/", new RootHandler());
+        HttpContext contextStorePage = server.createContext("/store", new MainPage(storeDAO));
+
+        contextMainPage.setAuthenticator(new Authenticator("get"));
+        contextStorePage.setAuthenticator(new Authenticator("get"));
+
 
         server.setExecutor(null);
         server.start();
