@@ -19,6 +19,10 @@ public class StoreApp {
         dataBaseHandler.fillStore(onlineStore);
         dataBaseHandler.printStore();
 
+        Server.startServer();
+
+
+
 
 
 //        RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
